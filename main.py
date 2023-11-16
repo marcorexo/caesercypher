@@ -2,6 +2,20 @@ alphabet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ]
+"""
+if position + shift > length of array
+  then 
+  position = position + shift - length of array
+
+  else
+  position = position + shift
+
+for example:
+  position = 14
+  shift = 13
+  length_of_array = 26
+  position = 14 + 13 - 26 = 2
+""" ""
 
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 
@@ -15,12 +29,21 @@ alphabet = [
 
 def encrypt(text, shift):
     encrypted_text = ""
+    """
+    if position + shift > length of array
+    then 
+    position = position + shift - length of array
 
+    else
+    position = position + shift
+    """
     for letter in text:
-        if letter in alphabet:
-            position = alphabet.index(letter)
+        position = alphabet.index(letter)
+        if position + shift > 26:
+            new_position = position + shift - 26
+        else:
             new_position = position + shift
-            encrypted_text += alphabet[new_position]
+        encrypted_text += alphabet[new_position]
     return encrypted_text
 
 
